@@ -6,6 +6,7 @@ let as;
 var galleryImg;
 var asImg;
 var homeImg;
+var playImg;
 // stars
 let stars = []
 // switch statement
@@ -23,7 +24,8 @@ function preload() {
   // buttons
   galleryImg = loadImage('assets/gallerybutton-04.png');
   asImg = loadImage('assets/asbutton-05.png');
-  homeImg = loadImage('assets/homebutton-06.png')
+  homeImg = loadImage('assets/homebutton-06.png');
+  playImg = loadImage('assets/playbutton-07.png');
 }
 
 
@@ -71,12 +73,17 @@ function draw() {
     image(ma, 0, 0, windowWidth, windowHeight);
     click3.draw();
     click4.draw();
+    click7.draw();
     break;
     case 'artist':
     image(as, 0, 0, windowWidth, windowHeight);
+    //drawStars();
     click5.draw();
     click6.draw();
     break;
+    case 'play':
+    background(0);
+    click6.draw();
   }
 }
 
@@ -141,5 +148,15 @@ click6.strokeWeight = 0;
 click6.cornerRadius = 100;
 click6.onRelease = function () {
   gameState = 'main'
+}
+click7 = new Clickable();
+click7.image = playImg;
+click7.locate (755, 810);
+click7.resize(100, 33);
+click7.text = "  ";
+click7.strokeWeight = 0;
+click7.cornerRadius = 100;
+click7.onRelease = function () {
+  gameState = 'play'
 }
 }
