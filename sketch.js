@@ -20,6 +20,8 @@ var pensize = 1;
 var pen = 1;
 var r = 0, g = 0, b = 0;
 let drawStart = true;
+// music
+let soundBack;
 
 function preload() {
   // font
@@ -35,6 +37,9 @@ function preload() {
   asImg = loadImage('assets/asbutton-05.png');
   homeImg = loadImage('assets/homebutton-06.png');
   playImg = loadImage('assets/playbutton-07.png');
+  // music
+  soundBack = new Howl({ src: ['assets/solitude.mp3'], loop: true, volume: 0.03});
+  soundBack.play();
 }
 
 
