@@ -6,6 +6,10 @@ let as;
 let sm;
 let ag;
 let mb;
+let fp;
+let ad;
+let sc;
+let wa;
 // button images
 var galleryImg;
 var asImg;
@@ -26,6 +30,9 @@ var r = 0, g = 0, b = 0;
 let drawStart = true;
 // music
 let soundBack;
+// draggable
+let drag;
+let co;
 
 function preload() {
   // font
@@ -45,10 +52,16 @@ function preload() {
   xImg = loadImage('assets/xbutton-10.png');
   // music
   // soundBack = new Howl({ src: ['assets/solitude.mp3'], loop: true, volume: 0.03});
-  //soundBack.play();
+  // soundBack.play();
   // artwork pictures
   ag = loadImage('assets/andrewgarfieldport.jpg');
   mb = loadImage('assets/mannequinbodies.jpeg');
+  fp = loadImage('assets/flowerpot.jpeg');
+  ad = loadImage('assets/addiction.jpeg');
+  sc = loadImage('assets/scissors.jpg');
+  wa = loadImage('assets/wirearms.jpg');
+  // draggable images
+  co = loadImage('assets/draggable-11.png');
 
 }
 
@@ -64,6 +77,21 @@ function setup() {
 		};
     stars.push(star);
 }
+drag = new Draggable();
+}
+
+function drawDraggables() {
+  drag.update();
+  drag.over();
+  drag.show();
+}
+
+function mousePressed() {
+  drag.pressed();
+}
+
+function mouseReleased() {
+  drag.released();
 }
 
 // doodling play screen
@@ -291,7 +319,9 @@ function draw() {
     click11.draw();
     click12.draw();
     click13.draw();
-    click14.draw();
+    drawDraggables();
+    mousePressed();
+    mouseReleased();
     break;
     case 'artist':
     image(as, 0, 0, 1366, 768);
@@ -323,9 +353,6 @@ function draw() {
     break;
     case 'popupart6':
     popupArt6();
-    break;
-    case 'popupart7':
-    popupArt7();
     break;
   }
 }
@@ -383,6 +410,120 @@ function popupArt2() {
   text('highlight. I paid very close attention to detail',710, 365);
   text('during this because I wanted to replicate the exact',710, 380);
   text('light, shade, and curvy features of it!',710, 395);
+  pop();
+  click15.draw();
+}
+
+function popupArt3() {
+  push();
+  rectMode(CENTER);
+  fill(255);
+  strokeWeight(0.7);
+  stroke(150);
+  rect(685, 400, 700, 500, 10);
+  textAlign(CENTER);
+  textSize(16);
+  textFont('myFontb');
+  fill(0);
+  text('DAINTY SUNS',830, 280);
+  imageMode(CENTER);
+  image(fp, 530, 420, 252, 336);
+  textAlign(LEFT);
+  textSize(13);
+  textFont('myFontb');
+  fill(0);
+  text('Dainty Suns is an oil painting of a flower pot.',710, 320);
+  text('I wanted to create a painting using warm colors',710, 335);
+  text('to represent the fall season.',710, 350);
+  pop();
+  click15.draw();
+}
+
+function popupArt4() {
+  push();
+  rectMode(CENTER);
+  fill(255);
+  strokeWeight(0.7);
+  stroke(150);
+  rect(685, 400, 700, 500, 10);
+  textAlign(CENTER);
+  textSize(16);
+  textFont('myFontb');
+  fill(0);
+  text('SEEING COLORS',830, 280);
+  imageMode(CENTER);
+  image(ad, 530, 420, 300, 217);
+  textAlign(LEFT);
+  textSize(13);
+  textFont('myFontb');
+  fill(0);
+  text('This is an abstract oil painting I did to replicate',710, 320);
+  text('the feeling of a drug addiction. Drug addictions',710, 335);
+  text('are seen as harmful to your body. However, we do not',710, 350);
+  text('hear enough about what it feels like to an addicted',710, 365);
+  text('user. The colors represent the ecstatic feeling when',710, 380);
+  text('taking a drug. The words intertwined in the colors',710, 395);
+  text('represents the feeling of being trapped within the',710, 410);
+  text('constraints of the drug.',710, 425);
+  pop();
+  click15.draw();
+}
+
+function popupArt5() {
+  push();
+  rectMode(CENTER);
+  fill(255);
+  strokeWeight(0.7);
+  stroke(150);
+  rect(685, 400, 700, 500, 10);
+  textAlign(CENTER);
+  textSize(16);
+  textFont('myFontb');
+  fill(0);
+  text('VISUALIZING CHANGE', 690, 390);
+  imageMode(CENTER);
+  image(sc, 680, 300, 480, 100);
+  textAlign(LEFT);
+  textSize(13);
+  textFont('myFontb');
+  fill(0);
+  text('The concept of this piece was understanding change.',565, 420);
+  text('Change to me is like a pair of scissors. Scissors',565, 435);
+  text('can be used to create change to objects with one',565, 450);
+  text('swift movement. After selecting scissors as my main',565, 465);
+  text('item of change, I tried to visualize the scissors in',565, 480);
+  text('different mediums. From left to right the scissors are',565, 495);
+  text('drawn in: charcoal, watercolors, pencil on grey paper,',565, 510);
+  text('color pencil, and pencil on white paper.',565, 525);
+  pop();
+  click15.draw();
+}
+
+function popupArt6() {
+  push();
+  rectMode(CENTER);
+  fill(255);
+  strokeWeight(0.7);
+  stroke(150);
+  rect(685, 400, 700, 500, 10);
+  textAlign(CENTER);
+  textSize(16);
+  textFont('myFontb');
+  fill(0);
+  text('TOUCH', 690, 430);
+  imageMode(CENTER);
+  image(wa, 680, 300, 450, 180);
+  textAlign(LEFT);
+  textSize(13);
+  textFont('myFontb');
+  fill(0);
+  text('Touch was inspired from "The Creation of Adam" by' ,565, 455);
+  text('Michelangelo. The painting is of Adam and God almost',565, 470);
+  text('touching one another to present the breath of life. ',565, 485);
+  text('This piece of mine is an abstract wire sculpture. Unlike',565, 500);
+  text(' the painting, The fingers touch and have no direct',565, 515);
+  text('connection to the religion. It uses the fingers touching',565, 530);
+  text('as a connection between humanity.',565, 545);
   pop();
   click15.draw();
 }
@@ -519,16 +660,6 @@ click13.strokeWeight = 0;
 click13.cornerRadius = 100;
 click13.onRelease = function () {
   gameState = 'popupart6'
-}
-click14 = new Clickable();
-click14.image = addImg;
-click14.locate (950, 320);
-click14.resize(30, 30);
-click14.text = "  ";
-click14.strokeWeight = 0;
-click14.cornerRadius = 100;
-click14.onRelease = function () {
-  gameState = 'popupart7'
 }
 click15 = new Clickable();
 click15.image = xImg;
