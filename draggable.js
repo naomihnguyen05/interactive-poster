@@ -1,8 +1,8 @@
 class Draggable {
   constructor() {
 
-    this.dragging = false; // Is the object being dragged?
-    this.rollover = false; // Is the mouse over the ellipse?
+    this.dragging = false;
+    this.rollover = false; 
 
      this.circleOneX = 0;
      this.circleOneY = 0;
@@ -11,7 +11,7 @@ class Draggable {
   }
 
   over() {
-    // Is mouse over object
+    // mouse over object
     if (mouseX > this.circleOneX && mouseX < this.circleOneX + this.circleOneW && mouseY > this.circleOneY && mouseY < this.circleOneY + this.circleOneH) {
       this.rollover = true;
     } else {
@@ -22,7 +22,7 @@ class Draggable {
 
   update() {
 
-    // Adjust location if being dragged
+    // Adjust location
     if (this.dragging) {
       this.circleOneX = mouseX + this.offsetX;
       this.circleOneY = mouseY + this.offsetY;
@@ -34,21 +34,21 @@ class Draggable {
 
     stroke(0);
     // Different fill based on state
-    if (this.dragging) {
-      fill(50);
-    } else if (this.rollover) {
-      fill(100);
-    } else {
-      fill(175, 200);
-    }
+    // if (this.dragging) {
+    //   fill(50);
+    // } else if (this.rollover) {
+    //   fill(100);
+    // } else {
+    //   fill(175, 200);
+    // }
     image(co, this.circleOneX, this.circleOneY, this.circleOneW, this.circleOneH);
   }
 
   pressed() {
-    // Did I click on the rectangle?
+    // Did I click
     if (mouseX > this.circleOneX && mouseX < this.circleOneX + this.circleOneW && mouseY > this.circleOneY && mouseY < this.circleOneY + this.circleOneH) {
       this.dragging = true;
-      // If so, keep track of relative location of click to corner of rectangle
+      // relative location of click
       this.offsetX = this.circleOneX - mouseX;
       this.offsetY = this.circleOneY - mouseY;
     }

@@ -17,6 +17,7 @@ var homeImg;
 var playImg;
 var addImg;
 var xImg;
+var play2Img;
 // stars
 let stars = []
 // switch statement
@@ -28,6 +29,11 @@ var pensize = 1;
 var pen = 1;
 var r = 0, g = 0, b = 0;
 let drawStart = true;
+// Kaleidoscope
+let symmetry = 8;
+let angle = 360 / symmetry;
+let musicBox;
+let x;
 // music
 let soundBack;
 // draggable
@@ -50,6 +56,7 @@ function preload() {
   playImg = loadImage('assets/playbutton-07.png');
   addImg = loadImage('assets/addbutton-08.png');
   xImg = loadImage('assets/xbutton-10.png');
+  play2Img = loadImage('assets/playbutton2-17.png');
   // music
   // soundBack = new Howl({ src: ['assets/solitude.mp3'], loop: true, volume: 0.03});
   // soundBack.play();
@@ -77,7 +84,9 @@ function setup() {
 		};
     stars.push(star);
 }
-drag = new Draggable();
+  drag = new Draggable();
+// Kaleidoscope
+angleMode(DEGREES);
 }
 
 function drawDraggables() {
@@ -91,7 +100,64 @@ function mousePressed() {
 }
 
 function mouseReleased() {
+  // Quit dragging
   drag.released();
+}
+
+function drawKal() {
+  translate(width / 2, height / 2);
+
+  //reptition loop:
+
+  for (let i = 0; i < symmetry; i++) {
+
+    push();
+
+    rotate(i*angle);
+    //mirroring
+    if (i % 2 == 1) {
+      scale(-1, 1);
+    }
+    //animation:
+
+    musicBox = frameCount * 5;
+    rotate( musicBox/ 8.0);
+
+    //drawing shapes
+    blendMode(ADD);
+    noStroke();
+
+    //pink rect
+    fill(255, 72, 176);
+    rect(100, 100, 20, 50);
+
+    push();
+    fill(253, 231,0 );
+    translate(100,100);
+    rotate(x*60);
+    triangle(30, 75, 58, 20, 86, 75);
+    pop();
+    x=+
+
+    //blue squares
+    push()
+    rotate(musicBox/4);
+    fill(0, 121, 191);
+    rect(30, 20, 55, 55);
+    pop()
+
+    //green circle
+    fill(0, 169, 92);
+    circle(80, 180, 25);
+
+    //green arc
+    noFill();
+    strokeWeight(15);
+    stroke(125, 148, 125);
+    arc(180, 55, 120, 120, 0, 90);
+    pop();
+
+  }
 }
 
 // doodling play screen
@@ -306,13 +372,13 @@ function draw() {
       drawStars();
       click1.draw();
       click2.draw();
-    //image(st, 0, 0);
     break;
     case 'main':
     image(ma, 0, 0, 1366, 768);
     click3.draw();
     click4.draw();
     click7.draw();
+    click16.draw();
     click8.draw();
     click9.draw();
     click10.draw();
@@ -334,6 +400,11 @@ function draw() {
     drawPencil();
     drawRainbow();
     drawButtons();
+    click6.draw();
+    break;
+    case 'play2':
+    background(0);
+    drawKal();
     click6.draw();
     break;
     case 'popupart1':
@@ -592,7 +663,7 @@ click6.onRelease = function () {
 }
 click7 = new Clickable();
 click7.image = playImg;
-click7.locate (630, 655);
+click7.locate (580, 655);
 click7.resize(100, 33);
 click7.text = "  ";
 click7.strokeWeight = 0;
@@ -670,5 +741,15 @@ click15.strokeWeight = 0;
 click15.cornerRadius = 100;
 click15.onRelease = function () {
   gameState = 'main'
+}
+click16 = new Clickable();
+click16.image = play2Img;
+click16.locate (700, 655);
+click16.resize(100, 33);
+click16.text = "  ";
+click16.strokeWeight = 0;
+click16.cornerRadius = 100;
+click16.onRelease = function () {
+  gameState = 'play2'
 }
 }
