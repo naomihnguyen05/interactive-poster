@@ -2,10 +2,10 @@ class Draggable {
   constructor() {
 
     this.dragging = false;
-    this.rollover = false; 
+    this.rollover = false;
 
-     this.circleOneX = 0;
-     this.circleOneY = 0;
+     this.circleOneX = 60;
+     this.circleOneY = 500;
      this.circleOneW = 240;
      this.circleOneH = 240;
   }
@@ -20,15 +20,15 @@ class Draggable {
 
   }
 
-  update() {
+  // update() {
+  //
+  //   // Adjust location
+  //   if (this.dragging) {
+  //     this.circleOneX = mouseX + this.offsetX;
+  //     this.circleOneY = mouseY + this.offsetY;
+  //   }
 
-    // Adjust location
-    if (this.dragging) {
-      this.circleOneX = mouseX + this.offsetX;
-      this.circleOneY = mouseY + this.offsetY;
-    }
 
-  }
 
   show() {
 
@@ -46,16 +46,18 @@ class Draggable {
 
   pressed() {
     // Did I click
+    if (mouseIsPressed) {
     if (mouseX > this.circleOneX && mouseX < this.circleOneX + this.circleOneW && mouseY > this.circleOneY && mouseY < this.circleOneY + this.circleOneH) {
-      this.dragging = true;
+      // this.dragging = true;
       // relative location of click
-      this.offsetX = this.circleOneX - mouseX;
-      this.offsetY = this.circleOneY - mouseY;
+      this.circleOneX = mouseX - 120;
+      this.circleOneY = mouseY - 120;
+    }
     }
   }
 
-  released() {
-    // Quit dragging
-    this.dragging = false;
-  }
+  // released() {
+  //   // Quit dragging
+  //   this.dragging = false;
+  // }
 }

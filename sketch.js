@@ -18,6 +18,7 @@ var playImg;
 var addImg;
 var xImg;
 var play2Img;
+let gal;
 // stars
 let stars = []
 // switch statement
@@ -57,6 +58,7 @@ function preload() {
   addImg = loadImage('assets/addbutton-08.png');
   xImg = loadImage('assets/xbutton-10.png');
   play2Img = loadImage('assets/playbutton2-17.png');
+  gal = loadImage('assets/gal-18.png');
   // music
   // soundBack = new Howl({ src: ['assets/solitude.mp3'], loop: true, volume: 0.03});
   // soundBack.play();
@@ -90,19 +92,19 @@ angleMode(DEGREES);
 }
 
 function drawDraggables() {
-  drag.update();
+  drag.pressed();
   drag.over();
   drag.show();
 }
 
-function mousePressed() {
-  drag.pressed();
-}
-
-function mouseReleased() {
-  // Quit dragging
-  drag.released();
-}
+// function mousePressed() {
+//   drag.pressed();
+// }
+//
+// function mouseReleased() {
+//   // Quit dragging
+//   drag.released();
+// }
 
 function drawKal() {
   translate(width / 2, height / 2);
@@ -129,13 +131,22 @@ function drawKal() {
 
     //pink rect
     fill(255, 72, 176);
+    rect(400, 100, 20, 300);
+
+    //purple outlines
+    strokeWeight(10);
+    stroke(147, 129, 255);
+
+
+    //light blue rect
+    fill(190, 227, 219);
     rect(100, 100, 20, 50);
 
     push();
     fill(253, 231,0 );
     translate(100,100);
     rotate(x*60);
-    triangle(30, 75, 58, 20, 86, 75);
+    triangle(30, 75, 90, 20, 100, 80);
     pop();
     x=+
 
@@ -146,17 +157,34 @@ function drawKal() {
     rect(30, 20, 55, 55);
     pop()
 
+    // red squares
+    push()
+    rotate(musicBox/4);
+    fill(154, 3, 30);
+    rect(80, 100, 55, 55);
+    pop()
+
+    // neon green rect
+    push()
+    rotate(musicBox/4);
+    fill(233, 255, 112);
+    rect(400, 100, 90, 55);
+    pop()
+
     //green circle
     fill(0, 169, 92);
     circle(80, 180, 25);
+
+    //orange circle
+    fill(255, 151, 112);
+    circle(300, 240, 100);
 
     //green arc
     noFill();
     strokeWeight(15);
     stroke(125, 148, 125);
-    arc(180, 55, 120, 120, 0, 90);
+    arc(180, 55, 300, 300, 0, 90);
     pop();
-
   }
 }
 
@@ -386,8 +414,8 @@ function draw() {
     click12.draw();
     click13.draw();
     drawDraggables();
-    mousePressed();
-    mouseReleased();
+    // mousePressed();
+    // mouseReleased();
     break;
     case 'artist':
     image(as, 0, 0, 1366, 768);
@@ -404,6 +432,7 @@ function draw() {
     break;
     case 'play2':
     background(0);
+    image(gal, 1230, 20, 115, 35);
     drawKal();
     click6.draw();
     break;
