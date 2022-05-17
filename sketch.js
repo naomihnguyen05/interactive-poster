@@ -40,6 +40,10 @@ let soundBack;
 // draggable
 let drag;
 let co;
+let ct;
+let bm;
+let ws;
+let bs;
 
 function preload() {
   // font
@@ -60,8 +64,8 @@ function preload() {
   play2Img = loadImage('assets/playbutton2-17.png');
   gal = loadImage('assets/gal-18.png');
   // music
-  // soundBack = new Howl({ src: ['assets/solitude.mp3'], loop: true, volume: 0.03});
-  // soundBack.play();
+  soundBack = new Howl({ src: ['assets/solitude.mp3'], loop: true, volume: 0.03});
+  soundBack.play();
   // artwork pictures
   ag = loadImage('assets/andrewgarfieldport.jpg');
   mb = loadImage('assets/mannequinbodies.jpeg');
@@ -71,6 +75,10 @@ function preload() {
   wa = loadImage('assets/wirearms.jpg');
   // draggable images
   co = loadImage('assets/draggable-11.png');
+  ct = loadImage('assets/draggable-12.png');
+  bm = loadImage('assets/draggable-14.png');
+  ws = loadImage('assets/draggable-15.png');
+  bs = loadImage('assets/draggable-16.png');
 
 }
 
